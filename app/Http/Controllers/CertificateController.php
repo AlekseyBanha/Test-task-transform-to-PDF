@@ -13,30 +13,37 @@ class CertificateController extends Controller
         return view('create');
     }
 
-    public function preview(Request $request)
+    /**
+     * @param Request $request
+     * @return string
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function store(Request $request)
     {
         $this->validate($request,
             [
                 'name' => 'required|min:3|max:30',
-                'number' => 'required|integer|unique:certificates',
+                'number' => 'required|integer|digits_between:1,6|unique:certificates',
                 'course' => 'required|min:3|max:30',
                 'date' => 'required|min:5|max:20',
             ]);
         $data = $request->all();
         Certificate::create($data);
-        return view('preview', compact('data'));
+        $this->generatePDF();
+        return redirect('all');
+
     }
 
     public function generatePDF()
     {
         $info = Certificate::latest()->first();
-        $pdf = PDF::loadView('generate', ['data' => $info])->setPaper('a5', 'landscape');
-        return $pdf->download('Certificate.pdf');
+        $pdf = PDF::loadView('generate', ['data' => $info])->setPaper(Certificate::FORMAT_PAPER, Certificate::CHANGE_ME);
+         $pdf->download('Certificate.pdf');
     }
 
     public function showAll()
     {
-        $certificates = Certificate::paginate(10);
+        $certificates = Certificate::orderBy('id', 'desc')->paginate(10);
         return view('table', compact('certificates'));
 
     }
@@ -44,7 +51,7 @@ class CertificateController extends Controller
     public function download($id)
     {
         $certificate = Certificate::find($id);
-        $pdf = PDF::loadView('generate', ['data' => $certificate])->setPaper('a5', 'landscape');
+        $pdf = PDF::loadView('generate', ['data' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::CHANGE_ME);
         return $pdf->download('Certificate.pdf');
 
     }

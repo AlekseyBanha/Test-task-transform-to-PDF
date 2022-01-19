@@ -22,10 +22,10 @@
                 </div>
             @endif
             <div class="panel-body">
-                <form action="{{ route('pdf.preview',) }}" method="post">
+                <form action="{{ route('pdf.preview',) }}" method="post" >
                     @csrf
                     <div class="number">
-                        <label class="form-label">Certificate number:</label>
+                        <label class="form-label" >Certificate number:</label>
                         <input name="number" type="text"  class="form-control">
                     </div>
                     <div class="course">
@@ -38,11 +38,12 @@
                     </div>
                     <div class="date">
                         <label class="form-label">Date of completion:</label>
-                        <input name="date" type="text" class="form-control">
+                        <input type="date" name="date" class="form-control">
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-2">Generate PDF</button>
                 </form>
+                <a href="{{route('all')}}" class="btn btn-primary mt-2">All Certificates</a>
             </div>
 
         </div>

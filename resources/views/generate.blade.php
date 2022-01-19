@@ -6,23 +6,20 @@
 
 </head>
 
-<style type="text/css">
+<style >
     h2 {
         text-align: center;
         font-size: 22px;
         margin-bottom: 50px;
     }
-
     img {
         margin-left: 540px;
 
     }
-
     div {
         margin: 2px;
         padding: 2px;
     }
-
     body { font-family: DejaVu Sans, sans-serif;
         background: #f2f2f2;
     }

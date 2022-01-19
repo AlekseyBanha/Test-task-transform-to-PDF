@@ -9,7 +9,10 @@ class Certificate extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    const FORMAT_PAPER = 'a5';
+    const CHANGE_ME = 'landscape';
+
+    protected array $fillable = [
         'name',
         'date',
         'number',
