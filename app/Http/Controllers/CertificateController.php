@@ -29,7 +29,8 @@ class CertificateController extends Controller
             ]);
         $data = $request->all();
         Certificate::create($data);
-        $this->generatePDF();
+        $certificate = Certificate::latest()->first();
+        Certificate::generatePDF($certificate);
         return redirect('all');
 
     }
@@ -37,12 +38,12 @@ class CertificateController extends Controller
     /**
      *
      */
-    public function generatePDF()
-    {
-        $certificate = Certificate::latest()->first();
-        $pdf = PDF::loadView('certificates.generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
-        $pdf->download('Certificate.pdf');
-    }
+//    public function generatePDF()
+//    {
+//        $certificate = Certificate::latest()->first();
+//        $pdf = PDF::loadView('certificates.generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
+//        return $pdf->download('Certificate.pdf');
+//    }
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View

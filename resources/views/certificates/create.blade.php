@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Generate PDF</title>
-{{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">--}}
+    {{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">--}}
 </head>
 <link rel="stylesheet" href="{{ asset("bootstrap/css/bootstrap.css") }}">
 <link rel="stylesheet" href="{{ asset("css/style.css") }}">
@@ -23,11 +23,11 @@
                 </div>
             @endif
             <div class="panel-body">
-                <form action="{{ route('pdf.preview',) }}" method="post" >
+                <form action="{{ route('pdf.preview',) }}" method="post">
                     @csrf
                     <div class="number">
-                        <label class="form-label" >Certificate number:</label>
-                        <input name="number" type="text"  class="form-control">
+                        <label class="form-label">Certificate number:</label>
+                        <input name="number" type="text" class="form-control">
                     </div>
                     <div class="course">
                         <label class="form-label">Course name</label>

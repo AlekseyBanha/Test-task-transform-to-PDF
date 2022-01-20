@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PDF;
 
 class Certificate extends Model
 {
@@ -18,5 +19,9 @@ class Certificate extends Model
         'number',
         'course',
     ];
-
+    public static  function generatePDF($certificate)
+    {
+        $pdf = PDF::loadView('certificates.generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
+       return $pdf->download('Certificate.pdf');
+    }
 }
