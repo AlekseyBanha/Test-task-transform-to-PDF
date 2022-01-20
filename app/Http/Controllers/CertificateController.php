@@ -10,7 +10,7 @@ class CertificateController extends Controller
 {
     public function create()
     {
-        return view('create');
+        return view('certificates.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class CertificateController extends Controller
     public function generatePDF()
     {
         $certificate = Certificate::latest()->first();
-        $pdf = PDF::loadView('generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
+        $pdf = PDF::loadView('certificates.generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
         $pdf->download('Certificate.pdf');
     }
 
@@ -50,7 +50,7 @@ class CertificateController extends Controller
     public function showAll()
     {
         $certificates = Certificate::orderBy('id', 'desc')->paginate(10);
-        return view('table', compact('certificates'));
+        return view('certificates.table', compact('certificates'));
 
     }
 
@@ -61,7 +61,7 @@ class CertificateController extends Controller
     public function download($id)
     {
         $certificate = Certificate::find($id);
-        $pdf = PDF::loadView('generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
+        $pdf = PDF::loadView('certificates.generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
         return $pdf->download('Certificate.pdf');
 
     }

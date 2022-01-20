@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::get('pdf/create', [CertificateController::class, 'create'])->name('pdf.create');
 Route::post('pdf/preview', [CertificateController::class, 'store'])->name('pdf.preview');
 Route::get('pdf/generate', [CertificateController::class, 'generatePDF'])->name('pdf.generate');
-Route::get('/all', 'CertificateController@showAll')->name('all');
-Route::get('/download/{id}', 'CertificateController@download')->name('download');
+Route::get('/all', [CertificateController::class, 'showAll'])->name('all');
+Route::get('/download/{id}', [CertificateController::class, 'download'])->name('download');
+
 
