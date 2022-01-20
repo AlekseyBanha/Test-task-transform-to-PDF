@@ -40,7 +40,6 @@
     <div class="col-md-12">
         {{ $certificates->links("pagination::bootstrap-4") }}
     </div>
-    {{--    <a href="#" class="btn btn-primary">Download All</a>--}}
     <a href="{{ route('pdf.create') }}" class="btn btn-primary">Greate new certificate </a>
     <a href="{{ route('pdf.download.last') }}" class="btn btn-success m-5">Download last certificate </a>
 </table>

@@ -10,22 +10,16 @@
         font-size: 22px;
         margin-bottom: 50px;
     }
-
     img {
         margin-left: 540px;
-
     }
-
     div {
         margin: 2px;
         padding: 2px;
     }
-
     body {
         font-family: DejaVu Sans, sans-serif;
-
     }
-
 </style>
 <body>
 <div class="container">
