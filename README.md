@@ -1,5 +1,4 @@
 # PDF
- 
 1)Execute $ git clone https://github.com/AlekseyBanha/Test-task-transform-to-PDF.git 
 2) Execute composer install
 3) Create a file .env (copy everything from .env.example)
