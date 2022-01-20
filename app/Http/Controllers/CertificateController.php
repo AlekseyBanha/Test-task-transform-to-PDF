@@ -8,6 +8,9 @@ use PDF;
 
 class CertificateController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create()
     {
         return view('certificates.create');
@@ -40,7 +43,6 @@ class CertificateController extends Controller
         $data = $request->all();
         Certificate::create($data);
         return redirect('all');
-
     }
 
     /**
@@ -60,7 +62,6 @@ class CertificateController extends Controller
     {
         $certificates = Certificate::orderBy('id', 'desc')->paginate(10);
         return view('certificates.table', compact('certificates'));
-
     }
 
     /**
@@ -72,6 +73,5 @@ class CertificateController extends Controller
         $certificate = Certificate::find($id);
         $pdf = PDF::loadView('certificates.generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
         return $pdf->download('Certificate.pdf');
-
     }
 }
