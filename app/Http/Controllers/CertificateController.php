@@ -15,7 +15,7 @@ class CertificateController extends Controller
 
     /**
      * @param Request $request
-     * @return string
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
@@ -34,13 +34,19 @@ class CertificateController extends Controller
 
     }
 
+    /**
+     *
+     */
     public function generatePDF()
     {
-        $info = Certificate::latest()->first();
-        $pdf = PDF::loadView('generate', ['data' => $info])->setPaper(Certificate::FORMAT_PAPER, Certificate::CHANGE_ME);
-         $pdf->download('Certificate.pdf');
+        $certificate = Certificate::latest()->first();
+        $pdf = PDF::loadView('generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
+        $pdf->download('Certificate.pdf');
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function showAll()
     {
         $certificates = Certificate::orderBy('id', 'desc')->paginate(10);
@@ -48,10 +54,14 @@ class CertificateController extends Controller
 
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function download($id)
     {
         $certificate = Certificate::find($id);
-        $pdf = PDF::loadView('generate', ['data' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::CHANGE_ME);
+        $pdf = PDF::loadView('generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
         return $pdf->download('Certificate.pdf');
 
     }

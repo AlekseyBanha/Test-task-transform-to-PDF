@@ -41,5 +41,6 @@
     </div>
     {{--    <a href="#" class="btn btn-primary">Download All</a>--}}
     <a href="{{ route('pdf.create') }}" class="btn btn-primary">Greate new certificate </a>
+</table>
 </body>
 </html>

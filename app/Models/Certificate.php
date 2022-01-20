@@ -10,7 +10,7 @@ class Certificate extends Model
     use HasFactory;
 
     const FORMAT_PAPER = 'a5';
-    const CHANGE_ME = 'landscape';
+    const PAGE_ORIENTATION = 'landscape';
 
     protected array $fillable = [
         'name',
