@@ -21,7 +21,8 @@
         <th scope="col">#</th>
         <th scope="col">Course</th>
         <th scope="col">Student</th>
-        <th scope="col">Created_at</th>
+        <th scope="col">Certificate number</th>
+        <th scope="col">Created at</th>
     </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@
             <th scope="row">{{$certificate->id}}</th>
             <td>{{$certificate->course}}</td>
             <td>{{$certificate->name}}</td>
+            <td>{{$certificate->number}}</td>
             <td>{{substr($certificate->created_at,0,11)}}</td>
             <td><a href="{{ route('download',$certificate->id) }}" class="btn btn-primary">Download PDF </a></td>
         </tr>
@@ -40,6 +42,7 @@
     </div>
     {{--    <a href="#" class="btn btn-primary">Download All</a>--}}
     <a href="{{ route('pdf.create') }}" class="btn btn-primary">Greate new certificate </a>
+    <a href="{{ route('download.Last') }}" class="btn btn-success m-5">Download last certificate </a>
 </table>
 </body>
 </html>

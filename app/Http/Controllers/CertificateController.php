@@ -20,30 +20,38 @@ class CertificateController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,
-            [
+        if ($request->isMethod('post')) {
+
+            $rules = [
                 'name' => 'required|min:3|max:30',
                 'number' => 'required|integer|digits_between:1,6|unique:certificates',
                 'course' => 'required|min:3|max:30',
                 'date' => 'required|min:5|max:20',
-            ]);
+            ];
+
+            $messages = [
+                'required' => 'The :attribute field is required.',
+            ];
+
+            $this->validate($request, $rules, $messages);
+
+        }
+
         $data = $request->all();
         Certificate::create($data);
-        $certificate = Certificate::latest()->first();
-        Certificate::generatePDF($certificate);
         return redirect('all');
 
     }
 
     /**
-     *
+     * @return mixed
      */
-//    public function generatePDF()
-//    {
-//        $certificate = Certificate::latest()->first();
-//        $pdf = PDF::loadView('certificates.generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
-//        return $pdf->download('Certificate.pdf');
-//    }
+    public function downloadLast()
+    {
+        $certificate = Certificate::latest()->first();
+        $pdf = PDF::loadView('certificates.generate', ['certificate' => $certificate])->setPaper(Certificate::FORMAT_PAPER, Certificate::PAGE_ORIENTATION);
+        return $pdf->download('Certificate.pdf');
+    }
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View

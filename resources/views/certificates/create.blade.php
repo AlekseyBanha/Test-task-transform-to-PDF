@@ -27,27 +27,27 @@
                     @csrf
                     <div class="number">
                         <label class="form-label">Certificate number:</label>
-                        <input name="number" type="text" class="form-control">
+                        <input name="number" type="text" value="{{old('number')}}" class="form-control">
                     </div>
                     <div class="course">
                         <label class="form-label">Course name</label>
-                        <input name="course" type="text" class="form-control">
+                        <input name="course" type="text" value="{{old('course')}}" class="form-control">
                     </div>
                     <div class="name">
                         <label class="form-label">Student's name:</label>
-                        <input name="name" type="text" class="form-control">
+                        <input name="name" type="text" value="{{old('name')}}" class="form-control">
                     </div>
                     <div class="date">
                         <label class="form-label">Date of completion:</label>
-                        <input type="date" name="date" class="form-control">
+                        <input type="date" name="date" value="{{old('date')}}" class="form-control">
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-2">Generate PDF</button>
+                    <button type="submit" class="btn btn-success mt-2">Create Certificates</button>
                 </form>
-                <a href="{{route('all')}}" class="btn btn-primary mt-2">All Certificates</a>
             </div>
-
         </div>
+        <a href="{{ route('all') }}" class="btn btn-warning mt-2 ">All certificates </a>
+
     </div>
 </div>
 </body>
