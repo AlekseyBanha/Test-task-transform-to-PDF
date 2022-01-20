@@ -6,3 +6,4 @@
 4) Сonnect DB in file .env
 5) If it gives an error, insert into composer - $ php artisan config:cache
 6) Making migrations $ php artisan migrate
+7) Final
