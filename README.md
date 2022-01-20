@@ -1,8 +1,8 @@
 # PDF
  
-1) Вам нужно создать $ git clone https://github.com/AlekseyBanha/Test-task-transform-to-PDF.git (я использую git bush)
-2) Нужно создать папочку vendor (я пользуюсь Composer) команда - $ composer install
-3) Создаем файл .env (копируем всё с .env.example)
-4) Подключаем свою БД в файле .env(у меня MySQL)
-5) Если выдаёт ошибку вставляем в composer - $ php artisan config:cache
-6) Делаем миграции $ php artisan migrate
+1) You need execute $ git clone https://github.com/AlekseyBanha/Test-task-transform-to-PDF.git 
+2) Need to create a folder vendor (I use Composer) command - $ composer install
+3) Create a file .env (copy everything from .env.example)
+4) We connect our database in a file .env(I use MySQL)
+5) If it gives an error, insert into composer - $ php artisan config:cache
+6) Making migrations $ php artisan migrate
