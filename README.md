@@ -1,7 +1,7 @@
 # PDF
  
 1) You need execute $ git clone https://github.com/AlekseyBanha/Test-task-transform-to-PDF.git 
-2) Need to create a folder vendor (I use Composer) command - $ composer install
+2) execute composer install
 3) Create a file .env (copy everything from .env.example)
 4) We connect our database in a file .env(I use MySQL)
 5) If it gives an error, insert into composer - $ php artisan config:cache
