@@ -46,7 +46,7 @@
                 </form>
             </div>
         </div>
-        <a href="{{ route('all') }}" class="btn btn-warning mt-2 ">All certificates </a>
+        <a href="{{ route('pdf.all') }}" class="btn btn-warning mt-2 ">All certificates </a>
 
     </div>
 </div>

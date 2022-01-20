@@ -33,7 +33,7 @@
             <td>{{$certificate->name}}</td>
             <td>{{$certificate->number}}</td>
             <td>{{substr($certificate->created_at,0,11)}}</td>
-            <td><a href="{{ route('download',$certificate->id) }}" class="btn btn-primary">Download PDF </a></td>
+            <td><a href="{{ route('pdf.download',$certificate->id) }}" class="btn btn-primary">Download PDF </a></td>
         </tr>
     @endforeach
     </tbody>
@@ -42,7 +42,7 @@
     </div>
     {{--    <a href="#" class="btn btn-primary">Download All</a>--}}
     <a href="{{ route('pdf.create') }}" class="btn btn-primary">Greate new certificate </a>
-    <a href="{{ route('download.Last') }}" class="btn btn-success m-5">Download last certificate </a>
+    <a href="{{ route('pdf.download.last') }}" class="btn btn-success m-5">Download last certificate </a>
 </table>
 </body>
 </html>
